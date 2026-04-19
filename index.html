@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>速熟英語 学習システム</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Lato:wght@400;700;900&display=swap');
+
+  :root {
+    --blue: #1a4fa0;
+    --orange: #e8630a;
+    --green: #1a7a3c;
+    --light-blue: #e8f0fb;
+    --border: #e0e4ea;
+    --bg: #f0f2f5;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--bg);
+    color: #222;
+    min-height: 100vh;
+  }
+
+  /* Header */
+  .header {
+    background: var(--blue);
+    color: white;
+    padding: 28px 24px 24px;
+    text-align: center;
+  }
+  .header h1 {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+  }
+  .header p {
+    font-size: 13px;
+    opacity: 0.75;
+  }
+  .header-bar {
+    height: 4px;
+    background: var(--orange);
+    width: 100%;
+  }
+
+  /* Stats */
+  .stats {
+    max-width: 700px;
+    margin: 24px auto 0;
+    padding: 0 20px;
+    display: flex;
+    gap: 12px;
+  }
+  .stat-card {
+    flex: 1;
+    background: white;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .stat-num {
+    font-size: 28px;
+    font-weight: 900;
+    font-family: 'Lato', sans-serif;
+    color: var(--blue);
+  }
+  .stat-label {
+    font-size: 12px;
+    color: #888;
+    margin-top: 2px;
+  }
+
+  /* Main */
+  .main {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px 20px 60px;
+  }
+
+  .section-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #888;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 24px 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* Unit card */
+  .unit-card {
+    background: white;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+  }
+  .unit-card:hover {
+    box-shadow: 0 4px 16px rgba(26,79,160,0.15);
+    transform: translateY(-2px);
+  }
+  .unit-card.coming-soon {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .unit-card-inner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+  }
+  .unit-num {
+    width: 48px;
+    height: 48px;
+    background: var(--blue);
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .unit-card.done .unit-num { background: var(--green); }
+  .unit-card.coming-soon .unit-num { background: #aaa; }
+
+  .unit-info { flex: 1; }
+  .unit-title-en {
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 2px;
+  }
+  .unit-title-ja {
+    font-size: 12px;
+    color: #888;
+  }
+
+  .unit-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  .tag {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: var(--light-blue);
+    color: var(--blue);
+  }
+  .tag.done-tag { background: #e8f5ee; color: var(--green); }
+  .tag.soon-tag { background: #f0f0f0; color: #aaa; }
+
+  .unit-arrow {
+    font-size: 18px;
+    color: var(--blue);
+    font-weight: 700;
+  }
+  .unit-card.coming-soon .unit-arrow { color: #ccc; }
+
+  /* Progress bar inside card */
+  .unit-progress {
+    height: 3px;
+    background: #f0f0f0;
+  }
+  .unit-progress-fill {
+    height: 3px;
+    background: var(--orange);
+    transition: width 0.4s ease;
+  }
+  .unit-card.done .unit-progress-fill { background: var(--green); width: 100% !important; }
+
+  /* Footer note */
+  .footer-note {
+    text-align: center;
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 32px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📚 速熟英語 学習システム</h1>
+  <p>yckkbt の学習記録</p>
+</div>
+<div class="header-bar"></div>
+
+<div class="stats">
+  <div class="stat-card">
+    <div class="stat-num" id="totalUnits">1</div>
+    <div class="stat-label">公開中ユニット</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num" id="doneUnits">0</div>
+    <div class="stat-label">学習済み</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num">246</div>
+    <div class="stat-label">Unit 39 語数</div>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="section-title">公開中のユニット</div>
+
+  <!-- Unit 39 -->
+  <a class="unit-card" href="https://yckkbt.github.io/sokujyuku39/study-system.html" target="_blank">
+    <div class="unit-progress"><div class="unit-progress-fill" style="width:0%"></div></div>
+    <div class="unit-card-inner">
+      <div class="unit-num">39</div>
+      <div class="unit-info">
+        <div class="unit-title-en">Gutenberg and the Printing Press</div>
+        <div class="unit-title-ja">グーテンベルクと活版印刷</div>
+        <div class="unit-meta">
+          <span class="tag">246 words</span>
+          <span class="tag">4 paragraphs</span>
+        </div>
+      </div>
+      <div class="unit-arrow">→</div>
+    </div>
+  </a>
+
+  <div class="section-title">準備中のユニット</div>
+
+  <!-- Unit 40 placeholder -->
+  <div class="unit-card coming-soon">
+    <div class="unit-card-inner">
+      <div class="unit-num">40</div>
+      <div class="unit-info">
+        <div class="unit-title-en">Coming Soon...</div>
+        <div class="unit-title-ja">準備中</div>
+        <div class="unit-meta">
+          <span class="tag soon-tag">近日公開</span>
+        </div>
+      </div>
+      <div class="unit-arrow">→</div>
+    </div>
+  </div>
+
+  <!-- Unit 41 placeholder -->
+  <div class="unit-card coming-soon">
+    <div class="unit-card-inner">
+      <div class="unit-num">41</div>
+      <div class="unit-info">
+        <div class="unit-title-en">Coming Soon...</div>
+        <div class="unit-title-ja">準備中</div>
+        <div class="unit-meta">
+          <span class="tag soon-tag">近日公開</span>
+        </div>
+      </div>
+      <div class="unit-arrow">→</div>
+    </div>
+  </div>
+
+  <!-- Unit 42 placeholder -->
+  <div class="unit-card coming-soon">
+    <div class="unit-card-inner">
+      <div class="unit-num">42</div>
+      <div class="unit-info">
+        <div class="unit-title-en">Facts About Koalas</div>
+        <div class="unit-title-ja">コアラに関する事実</div>
+        <div class="unit-meta">
+          <span class="tag soon-tag">近日公開</span>
+        </div>
+      </div>
+      <div class="unit-arrow">→</div>
+    </div>
+  </div>
+
+  <div class="footer-note">ユニットが増えるたびに更新されます</div>
+</div>
+
+</body>
+</html>
