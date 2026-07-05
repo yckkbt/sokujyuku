@@ -6,38 +6,10 @@
 <title>速熟英語 学習システム</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Lato:wght@400;700;900&display=swap');
-
-  :root {
-    --blue: #1a4fa0;
-    --orange: #e8630a;
-    --green: #1a7a3c;
-    --light-blue: #e8f0fb;
-    --border: #e0e4ea;
-    --bg: #f0f2f5;
-  }
-
+  :root { --blue: #1a4fa0; --orange: #e8630a; --green: #1a7a3c; --light-blue: #e8f0fb; --border: #e0e4ea; --bg: #f0f2f5; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: 'Noto Sans JP', sans-serif;
-    background: var(--bg);
-    color: #222;
-    min-height: 100vh;
-  }
-
-  /* Password screen */
-  #passwordScreen {
-    position: fixed;
-    inset: 0;
-    background: var(--blue);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    flex-direction: column;
-    gap: 20px;
-    padding: 24px;
-  }
+  body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: #222; min-height: 100vh; }
+  #passwordScreen { position: fixed; inset: 0; background: var(--blue); display: flex; align-items: center; justify-content: center; z-index: 9999; flex-direction: column; gap: 20px; padding: 24px; }
   .pw-logo { font-family: 'Lato', sans-serif; font-size: 44px; font-weight: 900; color: var(--orange); }
   .pw-title { color: white; font-size: 17px; font-weight: 700; text-align: center; }
   .pw-sub { color: rgba(255,255,255,0.7); font-size: 13px; text-align: center; }
@@ -51,189 +23,41 @@
   .pw-error { font-size: 13px; color: #c0392b; text-align: center; display: none; margin-top: 2px; }
   @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
   #mainContent { display: none; }
-
-  /* Header */
-  .header {
-    background: var(--blue);
-    color: white;
-    padding: 28px 24px 24px;
-    text-align: center;
-  }
-  .header h1 {
-    font-size: 22px;
-    font-weight: 900;
-    letter-spacing: 0.04em;
-    margin-bottom: 6px;
-  }
-  .header p {
-    font-size: 13px;
-    opacity: 0.75;
-  }
-  .header-bar {
-    height: 4px;
-    background: var(--orange);
-    width: 100%;
-  }
-
-  /* Stats */
-  .stats {
-    max-width: 700px;
-    margin: 24px auto 0;
-    padding: 0 20px;
-    display: flex;
-    gap: 12px;
-  }
-  .stat-card {
-    flex: 1;
-    background: white;
-    border-radius: 10px;
-    padding: 16px;
-    text-align: center;
-    border: 1px solid var(--border);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-  }
-  .stat-num {
-    font-size: 28px;
-    font-weight: 900;
-    font-family: 'Lato', sans-serif;
-    color: var(--blue);
-  }
-  .stat-label {
-    font-size: 12px;
-    color: #888;
-    margin-top: 2px;
-  }
-
-  /* Main */
-  .main {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 20px 20px 60px;
-  }
-
-  .section-title {
-    font-size: 13px;
-    font-weight: 700;
-    color: #888;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin: 24px 0 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .section-title::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  /* Unit card */
-  .unit-card {
-    background: white;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    margin-bottom: 12px;
-    overflow: hidden;
-    transition: box-shadow 0.2s, transform 0.2s;
-    text-decoration: none;
-    display: block;
-    color: inherit;
-  }
-  .unit-card:hover {
-    box-shadow: 0 4px 16px rgba(26,79,160,0.15);
-    transform: translateY(-2px);
-  }
-  .unit-card.coming-soon {
-    opacity: 0.5;
-    pointer-events: none;
-  }
-  .unit-card-inner {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 16px 20px;
-  }
-  .unit-num {
-    width: 48px;
-    height: 48px;
-    background: var(--blue);
-    color: white;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Lato', sans-serif;
-    font-weight: 900;
-    font-size: 20px;
-    flex-shrink: 0;
-  }
+  .header { background: var(--blue); color: white; padding: 28px 24px 24px; text-align: center; }
+  .header h1 { font-size: 22px; font-weight: 900; letter-spacing: 0.04em; margin-bottom: 6px; }
+  .header p { font-size: 13px; opacity: 0.75; }
+  .header-bar { height: 4px; background: var(--orange); width: 100%; }
+  .stats { max-width: 700px; margin: 24px auto 0; padding: 0 20px; display: flex; gap: 12px; }
+  .stat-card { flex: 1; background: white; border-radius: 10px; padding: 16px; text-align: center; border: 1px solid var(--border); box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .stat-num { font-size: 28px; font-weight: 900; font-family: 'Lato', sans-serif; color: var(--blue); }
+  .stat-label { font-size: 12px; color: #888; margin-top: 2px; }
+  .main { max-width: 700px; margin: 0 auto; padding: 20px 20px 60px; }
+  .section-title { font-size: 13px; font-weight: 700; color: #888; letter-spacing: 0.08em; text-transform: uppercase; margin: 24px 0 12px; display: flex; align-items: center; gap: 8px; }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .unit-card { background: white; border-radius: 10px; border: 1px solid var(--border); box-shadow: 0 1px 4px rgba(0,0,0,0.06); margin-bottom: 12px; overflow: hidden; transition: box-shadow 0.2s, transform 0.2s; text-decoration: none; display: block; color: inherit; }
+  .unit-card:hover { box-shadow: 0 4px 16px rgba(26,79,160,0.15); transform: translateY(-2px); }
+  .unit-card.coming-soon { opacity: 0.5; pointer-events: none; }
+  .unit-card-inner { display: flex; align-items: center; gap: 16px; padding: 16px 20px; }
+  .unit-num { width: 48px; height: 48px; background: var(--blue); color: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: 'Lato', sans-serif; font-weight: 900; font-size: 20px; flex-shrink: 0; }
   .unit-card.done .unit-num { background: var(--green); }
   .unit-card.coming-soon .unit-num { background: #aaa; }
-
   .unit-info { flex: 1; }
-  .unit-title-en {
-    font-family: 'Lato', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: #1a1a1a;
-    margin-bottom: 2px;
-  }
-  .unit-title-ja {
-    font-size: 12px;
-    color: #888;
-  }
-
-  .unit-meta {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 6px;
-  }
-  .tag {
-    font-size: 11px;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 20px;
-    background: var(--light-blue);
-    color: var(--blue);
-  }
+  .unit-title-en { font-family: 'Lato', sans-serif; font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 2px; }
+  .unit-title-ja { font-size: 12px; color: #888; }
+  .unit-meta { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+  .tag { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 20px; background: var(--light-blue); color: var(--blue); }
   .tag.done-tag { background: #e8f5ee; color: var(--green); }
   .tag.soon-tag { background: #f0f0f0; color: #aaa; }
-
-  .unit-arrow {
-    font-size: 18px;
-    color: var(--blue);
-    font-weight: 700;
-  }
+  .unit-arrow { font-size: 18px; color: var(--blue); font-weight: 700; }
   .unit-card.coming-soon .unit-arrow { color: #ccc; }
-
-  /* Progress bar inside card */
-  .unit-progress {
-    height: 3px;
-    background: #f0f0f0;
-  }
-  .unit-progress-fill {
-    height: 3px;
-    background: var(--orange);
-    transition: width 0.4s ease;
-  }
+  .unit-progress { height: 3px; background: #f0f0f0; }
+  .unit-progress-fill { height: 3px; background: var(--orange); transition: width 0.4s ease; }
   .unit-card.done .unit-progress-fill { background: var(--green); width: 100% !important; }
-
-  /* Footer note */
-  .footer-note {
-    text-align: center;
-    font-size: 12px;
-    color: #aaa;
-    margin-top: 32px;
-  }
+  .footer-note { text-align: center; font-size: 12px; color: #aaa; margin-top: 32px; }
 </style>
 </head>
 <body>
 
-<!-- Password Screen -->
 <div id="passwordScreen">
   <div class="pw-logo">YCK</div>
   <div class="pw-title">速熟英単語 学習システム</div>
@@ -246,323 +70,116 @@
   </div>
 </div>
 
-<!-- Main Content -->
 <div id="mainContent">
-
 <div class="header">
   <h1>📚 速熟英単語 学習システム</h1>
   <p>YCK山口中央個別</p>
 </div>
 <div class="header-bar"></div>
-
 <div class="stats">
-  <div class="stat-card">
-    <div class="stat-num" id="totalUnits">17</div>
-    <div class="stat-label">公開中ユニット</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-num" id="doneUnits">0</div>
-    <div class="stat-label">学習済み</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-num">246</div>
-    <div class="stat-label">Unit 39 語数</div>
-  </div>
+  <div class="stat-card"><div class="stat-num">18</div><div class="stat-label">公開中ユニット</div></div>
+  <div class="stat-card"><div class="stat-num" id="doneUnits">0</div><div class="stat-label">学習済み</div></div>
+  <div class="stat-card"><div class="stat-num">246</div><div class="stat-label">Unit 39 語数</div></div>
 </div>
-
 <div class="main">
-
   <div class="section-title">公開中のユニット</div>
 
-  <!-- Unit 34 -->
   <a class="unit-card" href="https://yckkbt.github.io/sokujyuku34/study-system-34.html" target="_blank">
     <div class="unit-progress"><div class="unit-progress-fill" style="width:0%"></div></div>
-    <div class="unit-card-inner">
-      <div class="unit-num">34</div>
-      <div class="unit-info">
-        <div class="unit-title-en">A Mother's Heartbeat</div>
-        <div class="unit-title-ja">母親の心音</div>
-        <div class="unit-meta">
-          <span class="tag">4 paragraphs</span>
-        </div>
-      </div>
-      <div class="unit-arrow">→</div>
-    </div>
+    <div class="unit-card-inner"><div class="unit-num">34</div><div class="unit-info"><div class="unit-title-en">A Mother's Heartbeat</div><div class="unit-title-ja">母親の心音</div><div class="unit-meta"><span class="tag">4 paragraphs</span></div></div><div class="unit-arrow">→</div></div>
   </a>
 
-  <!-- Unit 35 -->
   <a class="unit-card" href="https://yckkbt.github.io/sokujyuku35/study-system-35.html" target="_blank">
     <div class="unit-progress"><div class="unit-progress-fill" style="width:0%"></div></div>
-    <div class="unit-card-inner">
-      <div class="unit-num">35</div>
-      <div class="unit-info">
-        <div class="unit-title-en">Light Pollution</div>
-        <div class="unit-title-ja">光害</div>
-        <div class="unit-meta">
-          <span class="tag">4 paragraphs</span>
-        </div>
-      </div>
-      <div class="unit-arrow">→</div>
-    </div>
+    <div class="unit-card-inner"><div class="unit-num">35</div><div class="unit-info"><div class="unit-title-en">Light Pollution</div><div class="unit-title-ja">光害</div><div class="unit-meta"><span class="tag">4 paragraphs</span></div></div><div class="unit-arrow">→</div></div>
   </a>
 
-  <!-- Unit 36 -->
   <a class="unit-card" href="https://yckkbt.github.io/sokujyuku36/study-system-36.html" target="_blank">
     <div class="unit-progress"><div class="unit-progress-fill" style="width:0%"></div></div>
-    <div class="unit-card-inner">
-      <div class="unit-num">36</div>
-      <div class="unit-info">
-        <div class="unit-title-en">The Importance of Bees</div>
-        <div class="unit-title-ja">激減するミツバチ</div>
-        <div class="unit-meta">
-          <span class="tag">4 paragraphs</span>
-        </div>
-      </div>
-      <div class="unit-arrow">→</div>
-    </div>
+    <div class="unit-card-inner"><div class="unit-num">36</div><div class="unit-info"><div class="unit-title-en">The Importance of Bees</div><div class="unit-title-ja">激減するミツバチ</div><div class="unit-meta"><span class="tag">4 paragraphs</span></div></div><div class="unit-arrow">→</div></div>
   </a>
 
-  <!-- Unit 37 -->
   <a class="unit-card" href="https://yckkbt.github.io/sokujyuku37/study-system-37.html" target="_blank">
     <div class="unit-progress"><div class="unit-progress-fill" style="width:0%"></div></div>
-    <div class="unit-card-inner">
-      <div class="unit-num">37</div>
-      <div class="unit-info">
-        <div class="unit-title-en">Circadian Rhythm</div>
-        <div class="unit-title-ja">サーカディアンリズム（体内時計）</div>
-        <div class="unit-meta">
-          <span class="tag">4 paragraphs</span>
-        </div>
-      </div>
-      <div class="unit-arrow">→</div>
-    </div>
+    <div class="unit-card-inner"><div class="unit-num">37</div><div class="unit-info"><div class="unit-title-en">Circadian Rhythm</div><div class="unit-title-ja">サーカディアンリズム（体内時計）</div><div class="unit-meta"><span class="tag">4 paragraphs</span></div></div><div class="unit-arrow">→</div></div>
   </a>
 
-  <!-- Unit 38 -->
   <a class="unit-card" href="https://yckkbt.github.io/sokujyuku38/study-system-38.html" target="_blank">
     <div class="unit-progress"><div class="unit-progress-fill" style="width:0%"></div></div>
-    <div class="unit-card-inner">
-      <div class="unit-num">38</div>
-      <div class="unit-info">
-        <div class="unit-title-en">Praising Effort or Ability?</div>
-        <div class="unit-title-ja">褒めるべきは努力か、能力か</div>
-        <div class="unit-meta">
-          <span class="tag">4 paragraphs</span>
-        </div>
-      </div>
-      <div class="unit-arrow">→</div>
-    </div>
+    <div class="unit-card-inner"><div class="unit-num">38</div><div class="unit-info"><div class="unit-title-en">Praising Effort or Ability?</div><div class="unit-title-ja">褒めるべきは努力か、能力か</div><div class="unit-meta"><span class="tag">4 paragraphs</span></div></div><div class="unit-arrow">→</div></div>
   </a>
 
-  <!-- Unit 39 -->
   <a class="unit-card" href="https://yckkbt.github.io/sokujyuku39/study-system.html" target="_blank">
     <div class="unit-progress"><div class="unit-progress-fill" style="width:0%"></div></div>
-    <div class="unit-card-inner">
-      <div class="unit-num">39</div>
-      <div class="unit-info">
-        <div class="unit-title-en">Gutenberg and the Printing Press</div>
-        <div class="unit-title-ja">グーテンベルクと活版印刷</div>
-        <div class="unit-meta">
-          <span class="tag">246 words</span>
-          <span class="tag">4 paragraphs</span>
-        </div>
-      </div>
-      <div class="unit-arrow">→</div>
-    </div>
+    <div class="unit-card-inner"><div class="unit-num">39</div><div class="unit-info"><div class="unit-title-en">Gutenberg and the Printing Press</div><div class="unit-title-ja">グーテンベルクと活版印刷</div><div class="unit-meta"><span class="tag">246 words</span><span class="tag">4 paragraphs</span></div></div><div class="unit-arrow">→</div></div>
   </a>
 
-  <!-- Unit 40 -->
   <a class="unit-card" href="https://yckkbt.github.io/sokujyuku40/study-system-40.html" target="_blank">
     <div class="unit-progress"><div class="unit-progress-fill" style="width:0%"></div></div>
-    <div class="unit-card-inner">
-      <div class="unit-num">40</div>
-      <div class="unit-info">
-        <div class="unit-title-en">Anger</div>
-        <div class="unit-title-ja">怒りを抑えるコツ</div>
-        <div class="unit-meta">
-          <span class="tag">3 paragraphs</span>
-        </div>
-      </div>
-      <div class="unit-arrow">→</div>
-    </div>
+    <div class="unit-card-inner"><div class="unit-num">40</div><div class="unit-info"><div class="unit-title-en">Anger</div><div class="unit-title-ja">怒りを抑えるコツ</div><div class="unit-meta"><span class="tag">3 paragraphs</span></div></div><div class="unit-arrow">→</div></div>
   </a>
 
-  <!-- Unit 41 -->
   <a class="unit-card" href="https://yckkbt.github.io/sokujyuku41/study-system-41.html" target="_blank">
     <div class="unit-progress"><div class="unit-progress-fill" style="width:0%"></div></div>
-    <div class="unit-card-inner">
-      <div class="unit-num">41</div>
-      <div class="unit-info">
-        <div class="unit-title-en">April Fools' Day</div>
-        <div class="unit-title-ja">エイプリルフールの起源と楽しみ方</div>
-        <div class="unit-meta">
-          <span class="tag">4 paragraphs</span>
-        </div>
-      </div>
-      <div class="unit-arrow">→</div>
-    </div>
+    <div class="unit-card-inner"><div class="unit-num">41</div><div class="unit-info"><div class="unit-title-en">April Fools' Day</div><div class="unit-title-ja">エイプリルフールの起源と楽しみ方</div><div class="unit-meta"><span class="tag">4 paragraphs</span></div></div><div class="unit-arrow">→</div></div>
   </a>
 
-  <!-- Unit 42 -->
   <a class="unit-card" href="https://yckkbt.github.io/sokujyuku42/study-system-42.html" target="_blank">
     <div class="unit-progress"><div class="unit-progress-fill" style="width:0%"></div></div>
-    <div class="unit-card-inner">
-      <div class="unit-num">42</div>
-      <div class="unit-info">
-        <div class="unit-title-en">Facts About Koalas</div>
-        <div class="unit-title-ja">コアラに関する事実</div>
-        <div class="unit-meta">
-          <span class="tag">4 paragraphs</span>
-        </div>
-      </div>
-      <div class="unit-arrow">→</div>
-    </div>
+    <div class="unit-card-inner"><div class="unit-num">42</div><div class="unit-info"><div class="unit-title-en">Facts About Koalas</div><div class="unit-title-ja">コアラに関する事実</div><div class="unit-meta"><span class="tag">4 paragraphs</span></div></div><div class="unit-arrow">→</div></div>
   </a>
 
-  <!-- Unit 43 -->
   <a class="unit-card" href="https://yckkbt.github.io/sokujyuku43/study-system-43.html" target="_blank">
     <div class="unit-progress"><div class="unit-progress-fill" style="width:0%"></div></div>
-    <div class="unit-card-inner">
-      <div class="unit-num">43</div>
-      <div class="unit-info">
-        <div class="unit-title-en">Bison and Native Americans</div>
-        <div class="unit-title-ja">バイソンとネイティブ・アメリカン</div>
-        <div class="unit-meta">
-          <span class="tag">254 words</span>
-          <span class="tag">4 paragraphs</span>
-        </div>
-      </div>
-      <div class="unit-arrow">→</div>
-    </div>
+    <div class="unit-card-inner"><div class="unit-num">43</div><div class="unit-info"><div class="unit-title-en">Bison and Native Americans</div><div class="unit-title-ja">バイソンとネイティブ・アメリカン</div><div class="unit-meta"><span class="tag">254 words</span><span class="tag">4 paragraphs</span></div></div><div class="unit-arrow">→</div></div>
   </a>
 
-  <!-- Unit 44 -->
   <a class="unit-card" href="https://yckkbt.github.io/sokujyuku44/study-system-44.html" target="_blank">
     <div class="unit-progress"><div class="unit-progress-fill" style="width:0%"></div></div>
-    <div class="unit-card-inner">
-      <div class="unit-num">44</div>
-      <div class="unit-info">
-        <div class="unit-title-en">Multilingualism vs. Monolingualism</div>
-        <div class="unit-title-ja">マルチリンガルとモノリンガル</div>
-        <div class="unit-meta">
-          <span class="tag">220 words</span>
-          <span class="tag">4 paragraphs</span>
-        </div>
-      </div>
-      <div class="unit-arrow">→</div>
-    </div>
+    <div class="unit-card-inner"><div class="unit-num">44</div><div class="unit-info"><div class="unit-title-en">Multilingualism vs. Monolingualism</div><div class="unit-title-ja">マルチリンガルとモノリンガル</div><div class="unit-meta"><span class="tag">220 words</span><span class="tag">4 paragraphs</span></div></div><div class="unit-arrow">→</div></div>
   </a>
 
-  <!-- Unit 45 -->
   <a class="unit-card" href="https://yckkbt.github.io/sokujyuku45/study-system-45.html" target="_blank">
     <div class="unit-progress"><div class="unit-progress-fill" style="width:0%"></div></div>
-    <div class="unit-card-inner">
-      <div class="unit-num">45</div>
-      <div class="unit-info">
-        <div class="unit-title-en">Greetings from Japan</div>
-        <div class="unit-title-ja">日本式の挨拶</div>
-        <div class="unit-meta">
-          <span class="tag">249 words</span>
-          <span class="tag">4 paragraphs</span>
-        </div>
-      </div>
-      <div class="unit-arrow">→</div>
-    </div>
+    <div class="unit-card-inner"><div class="unit-num">45</div><div class="unit-info"><div class="unit-title-en">Greetings from Japan</div><div class="unit-title-ja">日本式の挨拶</div><div class="unit-meta"><span class="tag">249 words</span><span class="tag">4 paragraphs</span></div></div><div class="unit-arrow">→</div></div>
   </a>
 
-  <!-- Unit 47 -->
   <a class="unit-card" href="https://yckkbt.github.io/sokujyuku47/study-system-47.html" target="_blank">
     <div class="unit-progress"><div class="unit-progress-fill" style="width:0%"></div></div>
-    <div class="unit-card-inner">
-      <div class="unit-num">47</div>
-      <div class="unit-info">
-        <div class="unit-title-en">Potatoes and Tomatoes in 1700s Europe</div>
-        <div class="unit-title-ja">18世紀の欧州におけるジャガイモとトマト</div>
-        <div class="unit-meta">
-          <span class="tag">256 words</span>
-          <span class="tag">4 paragraphs</span>
-        </div>
-      </div>
-      <div class="unit-arrow">→</div>
-    </div>
+    <div class="unit-card-inner"><div class="unit-num">47</div><div class="unit-info"><div class="unit-title-en">Potatoes and Tomatoes in 1700s Europe</div><div class="unit-title-ja">18世紀の欧州におけるジャガイモとトマト</div><div class="unit-meta"><span class="tag">256 words</span><span class="tag">4 paragraphs</span></div></div><div class="unit-arrow">→</div></div>
   </a>
 
-  <!-- Unit 48 -->
   <a class="unit-card" href="https://yckkbt.github.io/sokujyuku48/study-system-48.html" target="_blank">
     <div class="unit-progress"><div class="unit-progress-fill" style="width:0%"></div></div>
-    <div class="unit-card-inner">
-      <div class="unit-num">48</div>
-      <div class="unit-info">
-        <div class="unit-title-en">Social Media: Advantages and Disadvantages</div>
-        <div class="unit-title-ja">SNSのメリット・デメリット</div>
-        <div class="unit-meta">
-          <span class="tag">243 words</span>
-          <span class="tag">4 paragraphs</span>
-        </div>
-      </div>
-      <div class="unit-arrow">→</div>
-    </div>
+    <div class="unit-card-inner"><div class="unit-num">48</div><div class="unit-info"><div class="unit-title-en">Social Media: Advantages and Disadvantages</div><div class="unit-title-ja">SNSのメリット・デメリット</div><div class="unit-meta"><span class="tag">243 words</span><span class="tag">4 paragraphs</span></div></div><div class="unit-arrow">→</div></div>
   </a>
 
-  <!-- Unit 49 -->
   <a class="unit-card" href="https://yckkbt.github.io/sokujyuku49/study-system-49.html" target="_blank">
     <div class="unit-progress"><div class="unit-progress-fill" style="width:0%"></div></div>
-    <div class="unit-card-inner">
-      <div class="unit-num">49</div>
-      <div class="unit-info">
-        <div class="unit-title-en">Culture and Language</div>
-        <div class="unit-title-ja">文化と言語</div>
-        <div class="unit-meta">
-          <span class="tag">249 words</span>
-          <span class="tag">4 paragraphs</span>
-        </div>
-      </div>
-      <div class="unit-arrow">→</div>
-    </div>
+    <div class="unit-card-inner"><div class="unit-num">49</div><div class="unit-info"><div class="unit-title-en">Culture and Language</div><div class="unit-title-ja">文化と言語</div><div class="unit-meta"><span class="tag">249 words</span><span class="tag">4 paragraphs</span></div></div><div class="unit-arrow">→</div></div>
   </a>
 
-  <!-- Unit 50 -->
   <a class="unit-card" href="https://yckkbt.github.io/sokujyuku50/study-system-50.html" target="_blank">
     <div class="unit-progress"><div class="unit-progress-fill" style="width:0%"></div></div>
-    <div class="unit-card-inner">
-      <div class="unit-num">50</div>
-      <div class="unit-info">
-        <div class="unit-title-en">Attitudes Toward Human Rights</div>
-        <div class="unit-title-ja">裁きと人権</div>
-        <div class="unit-meta">
-          <span class="tag">243 words</span>
-          <span class="tag">4 paragraphs</span>
-        </div>
-      </div>
-      <div class="unit-arrow">→</div>
-    </div>
+    <div class="unit-card-inner"><div class="unit-num">50</div><div class="unit-info"><div class="unit-title-en">Attitudes Toward Human Rights</div><div class="unit-title-ja">裁きと人権</div><div class="unit-meta"><span class="tag">243 words</span><span class="tag">4 paragraphs</span></div></div><div class="unit-arrow">→</div></div>
   </a>
 
-  <!-- Unit 51 -->
   <a class="unit-card" href="https://yckkbt.github.io/sokujyuku51/study-system-51.html" target="_blank">
     <div class="unit-progress"><div class="unit-progress-fill" style="width:0%"></div></div>
-    <div class="unit-card-inner">
-      <div class="unit-num">51</div>
-      <div class="unit-info">
-        <div class="unit-title-en">Fuzzy Logic</div>
-        <div class="unit-title-ja">ファジー論理</div>
-        <div class="unit-meta">
-          <span class="tag">265 words</span>
-          <span class="tag">4 paragraphs</span>
-        </div>
-      </div>
-      <div class="unit-arrow">→</div>
-    </div>
+    <div class="unit-card-inner"><div class="unit-num">51</div><div class="unit-info"><div class="unit-title-en">Fuzzy Logic</div><div class="unit-title-ja">ファジー論理</div><div class="unit-meta"><span class="tag">265 words</span><span class="tag">4 paragraphs</span></div></div><div class="unit-arrow">→</div></div>
+  </a>
+
+  <a class="unit-card" href="https://yckkbt.github.io/sokujyuku52/study-system-52.html" target="_blank">
+    <div class="unit-progress"><div class="unit-progress-fill" style="width:0%"></div></div>
+    <div class="unit-card-inner"><div class="unit-num">52</div><div class="unit-info"><div class="unit-title-en">Organic Food</div><div class="unit-title-ja">オーガニック食品</div><div class="unit-meta"><span class="tag">268 words</span><span class="tag">4 paragraphs</span></div></div><div class="unit-arrow">→</div></div>
   </a>
 
   <div class="footer-note">ユニットが増えるたびに更新されます</div>
 </div>
-
-</div><!-- end mainContent -->
+</div>
 
 <script>
   const CORRECT_PASSWORD = 'yckeng';
-
   function checkPassword() {
     const input = document.getElementById('pwInput');
     const error = document.getElementById('pwError');
@@ -577,8 +194,6 @@
       setTimeout(() => input.classList.remove('error'), 400);
     }
   }
-
-  // Check if already authenticated this session
   window.onload = function() {
     if (sessionStorage.getItem('authenticated') === 'true') {
       document.getElementById('passwordScreen').style.display = 'none';
@@ -586,6 +201,5 @@
     }
   };
 </script>
-
 </body>
 </html>
